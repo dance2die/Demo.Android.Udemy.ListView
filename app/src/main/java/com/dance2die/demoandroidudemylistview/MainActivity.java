@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        initializeListView();
+    }
+
+    private void initializeListView() {
+        ArrayList<String> myFamily = new ArrayList<>();
+        myFamily.add("Rob");
+        myFamily.add("Kirsten");
+        myFamily.add("Tommy");
+        myFamily.add("Raphie");
+
+        ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myFamily);
+
+        ListView myListView = (ListView) findViewById(R.id.myListView);
+        myListView.setAdapter(myArrayAdapter);
     }
 
     @Override
